@@ -78,10 +78,15 @@ body,
 td,
 th,
 tr,
-p,
 a {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px
+}
+
+
+p {
+    font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 16px
 }
 
 strong {
@@ -96,7 +101,8 @@ heading {
 
 papertitle {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+  font-style: italic;
   font-weight: 700
 }
 
