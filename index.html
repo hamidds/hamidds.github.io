@@ -36,22 +36,6 @@
     padding: 80px 64px 96px;
     position: relative;
   }
-  /* running header — like a printed book page */
-  .runner {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-family: 'Newsreader', serif;
-    font-size: 12px;
-    font-style: italic;
-    color: var(--mute);
-    letter-spacing: 0.04em;
-    border-bottom: 0.5px solid var(--rule);
-    padding-bottom: 10px;
-    margin-bottom: 64px;
-  }
-  .runner .folio { font-style: normal; font-variant-numeric: oldstyle-nums; }
-
   /* Hero */
   .hero {
     display: grid;
@@ -109,8 +93,8 @@
   .section {
     margin-top: 88px;
     display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 48px;
+    grid-template-columns: 150px 1fr;
+    gap: 120px;
   }
   .section h2 {
     font-family: 'Newsreader', serif;
@@ -165,8 +149,8 @@
   }
   .pub .meta {
     position: absolute;
-    left: -160px;
-    width: 130px;
+    left: -128px;
+    width: 100px;
     text-align: right;
     top: 4px;
     font-family: 'JetBrains Mono', monospace;
@@ -254,11 +238,6 @@
 <body>
 
   <div class="page">
-    <div class="runner">
-      <span><em>Hamidreza Saffari</em> · personal page</span>
-      <span class="folio">i</span>
-    </div>
-
     <div class="hero">
       <div>
         <h1>Hamidreza Saffari</h1>
@@ -362,7 +341,6 @@
     </section>
 
     <div class="colophon">
-      <span>Set in Newsreader. Iron-oxide ink on bone paper.</span>
       <span>Milano · MMXXVI</span>
     </div>
   </div>
