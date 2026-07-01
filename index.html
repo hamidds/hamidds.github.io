@@ -1,241 +1,371 @@
-<!DOCTYPE HTML>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hamidreza Saffari</title>
+<meta name="author" content="Hamidreza Saffari">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fdfcfa;
+    --paper-2: #f4f2ed;
+    --ink: #14110d;
+    --ink-2: #3a342c;
+    --mute: #908778;
+    --rule: #d8d2c4;
+    --accent: #7a3520; /* iron oxide */
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Newsreader', Georgia, serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 80px 64px 96px;
+    position: relative;
+  }
+  /* running header — like a printed book page */
+  .runner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'Newsreader', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--mute);
+    letter-spacing: 0.04em;
+    border-bottom: 0.5px solid var(--rule);
+    padding-bottom: 10px;
+    margin-bottom: 64px;
+  }
+  .runner .folio { font-style: normal; font-variant-numeric: oldstyle-nums; }
 
-  <title>Hamidreza Saffari</title>
-  
-  <meta name="author" content="Hamidreza Saffari">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 48px;
+    align-items: end;
+    margin-bottom: 56px;
+  }
+  .hero h1 {
+    font-family: 'Newsreader', serif;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+    font-variant-ligatures: common-ligatures discretionary-ligatures;
+  }
+  .hero .role {
+    font-size: 18px;
+    color: var(--ink-2);
+    margin: 16px 0 0;
+    max-width: 30em;
+  }
+  .hero .role a { color: var(--accent); text-decoration: none; border-bottom: 0.5px solid var(--accent); padding-bottom: 1px; }
+  .hero .portrait {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: url("images/hamidds.png") center/cover;
+    box-shadow: 0 0 0 0.5px var(--rule), 0 0 0 8px var(--paper), 0 0 0 8.5px var(--rule);
+  }
+
+  /* Links rail */
+  .rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: baseline;
+    margin: 28px 0 0;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: var(--ink-2);
+  }
+  .rail a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--rule);
+    padding-bottom: 2px;
+    transition: border-color .15s, color .15s;
+  }
+  .rail a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .rail .sep { color: var(--rule); }
+
+  /* Section heading */
+  .section {
+    margin-top: 88px;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 48px;
+  }
+  .section h2 {
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 22px;
+    margin: 0;
+    color: var(--ink-2);
+    letter-spacing: 0.01em;
+    position: sticky;
+    top: 24px;
+    align-self: start;
+  }
+  .section h2 .num {
+    display: block;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--mute);
+    letter-spacing: 0.18em;
+    margin-bottom: 6px;
+  }
+  .section-body { max-width: 32em; }
+
+  /* Bio paragraph */
+  .bio p {
+    font-size: 19px;
+    line-height: 1.6;
+    margin: 0 0 1em;
+    text-wrap: pretty;
+    hanging-punctuation: first;
+  }
+  .bio em { font-style: italic; color: var(--ink); }
+  .bio strong { font-weight: 600; }
+
+  /* Fleuron divider */
+  .fleuron {
+    text-align: center;
+    color: var(--rule);
+    font-size: 22px;
+    letter-spacing: 1.6em;
+    margin: 64px 0 0;
+    user-select: none;
+  }
+
+  /* Publications: with marginal venue/year */
+  .pubs { display: flex; flex-direction: column; gap: 28px; }
+  .pub {
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+  }
+  .pub .meta {
+    position: absolute;
+    left: -160px;
+    width: 130px;
+    text-align: right;
+    top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--mute);
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+  }
+  .pub .meta .venue { display: block; color: var(--ink-2); font-weight: 500; }
+  .pub .title {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0 0 4px;
+    text-wrap: balance;
+  }
+  .pub .authors {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .pub .authors .me { color: var(--ink); font-weight: 600; }
+  .pub .links {
+    margin-top: 6px;
+    font-size: 12.5px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--mute);
+    letter-spacing: 0.04em;
+  }
+  .pub .links a { color: var(--accent); text-decoration: none; border-bottom: 0.5px solid currentColor; }
+  .pub .equal { color: var(--mute); font-style: italic; font-family: 'Newsreader', serif; font-size: 12.5px; margin-top: 4px; }
+
+  /* Footer colophon */
+  .colophon {
+    margin-top: 96px;
+    padding-top: 24px;
+    border-top: 0.5px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--mute);
+    letter-spacing: 0.04em;
+  }
+
+  /* Margin notes for bio interests */
+  .keyword {
+    background: linear-gradient(180deg, transparent 60%, rgba(122,53,32,0.14) 60%);
+    padding: 0 2px;
+  }
+
+  /* Responsive — collapse the print-margin layout on narrow screens */
+  @media (max-width: 720px) {
+    .page { padding: 48px 24px 64px; }
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .hero h1 { font-size: 44px; }
+    .hero .portrait { width: 120px; height: 120px; order: -1; }
+    .section {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 56px;
+    }
+    .section h2 { position: static; }
+    .section-body { max-width: none; }
+    /* venue/year moves inline above each title instead of into the margin */
+    .pub .meta {
+      position: static;
+      width: auto;
+      text-align: left;
+      margin-bottom: 4px;
+    }
+    .pub .meta .venue { display: inline; }
+    .pub .meta .venue::after { content: " · "; color: var(--mute); }
+    .colophon { flex-direction: column; gap: 4px; }
+  }
+</style>
 </head>
-
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
-                <name>Hamidreza Saffari</name>
-              </p>
-              <p>I'm a Computer Science MSc student at <a href="https://polimi.it/">Politecnico di Milano</a>.
-              </p>
-              <p style="text-align:center">
-                <a href="data/CVf.pdf">CV</a> &nbsp|&nbsp
-                <a href="mailto:hamids9965@gmail.com">Email</a> &nbsp|&nbsp
-                <a href="https://scholar.google.co.uk/citations?hl=en&pli=1&user=twyxntoAAAAJ">Google Scholar</a> &nbsp|&nbsp
-                <a href="https://www.linkedin.com/in/hamidreza-saffari/">Linkedin</a> &nbsp|&nbsp
-                <a href="https://github.com/hamidds">Github</a>
-              </p>
-            </td>
-            <td style="padding:2.5%;width:40%;max-width:35%">
-              <img style="width:100%;max-width:100%;border-radius: 60%;" alt="profile photo" src="images/hamidds.png" class="hoverZoomLink">
-            </td>
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle;">
-              <heading>Publications</heading>
-              <p>I'm particularly interested in <b>computational social science</b> and <b>natural language processing</b>. My research focuses on understanding cultural biases and social dynamics in AI systems, with emphasis on cross-cultural perspectives and multilingual analysis.</p>
-            </td>
-          </tr>
-        </tbody></table>
-        
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-          <tr>
-            <td style="padding:8px 20px;width:100%;vertical-align:middle">
-              <papertitle>Can I introduce my boyfriend to my grandmother? Evaluating LLMs on Iranian Culture</papertitle>
-              <br>
-              <strong>Hamidreza Saffari</strong>, 
-              Mohammadamin Shafiei, 
-              Donya Rooein, 
-              Francesco Pierri, 
-              Debora Nozza
-              <br>
-              <em>NAACL 2025 [<a href="https://aclanthology.org/2025.findings-naacl.337/">Paper</a>]</em>
-            </td>
-          </tr>
+  <div class="page">
+    <div class="runner">
+      <span><em>Hamidreza Saffari</em> · personal page</span>
+      <span class="folio">i</span>
+    </div>
 
-          <tr>
-            <td style="padding:8px 20px;width:100%;vertical-align:middle">
-              <papertitle>Measuring Gender Bias in Language Models in Farsi</papertitle>
-              <br>
-              <strong>Hamidreza Saffari</strong>, 
-              Mohammadamin Shafiei, 
-              Donya Rooein, 
-              Debora Nozza
-              <br>
-              <em>ACL (GebNLP) 2025 [<a href="https://aclanthology.org/2025.gebnlp-1.21/">Paper</a>]</em>
-            </td>
-          </tr>
+    <div class="hero">
+      <div>
+        <h1>Hamidreza Saffari</h1>
+        <p class="role">Computer&nbsp;Science MSc&nbsp;student at <a href="https://polimi.it/">Politecnico di Milano</a>. I work on language models, culture, and the quiet frictions between them.</p>
+        <div class="rail">
+          <a href="data/CVf.pdf">CV</a><span class="sep">·</span>
+          <a href="mailto:hamids9965@gmail.com">Email</a><span class="sep">·</span>
+          <a href="https://scholar.google.co.uk/citations?hl=en&pli=1&user=twyxntoAAAAJ">Scholar</a><span class="sep">·</span>
+          <a href="https://www.linkedin.com/in/hamidreza-saffari/">LinkedIn</a><span class="sep">·</span>
+          <a href="https://github.com/hamidds">GitHub</a>
+        </div>
+      </div>
+      <div class="portrait" role="img" aria-label="Portrait of Hamidreza Saffari"></div>
+    </div>
 
-          <tr>
-            <td style="padding:8px 20px;width:100%;vertical-align:middle">
-              <papertitle>Beyond Hate Speech: NLP's Challenges and Opportunities in Dehumanizing</papertitle>
-              <br>
-              <strong>Hamidreza Saffari</strong>, 
-              Mohammadamin Shafiei, 
-              Hezhao Zhang, 
-              Lasana Harris, 
-              Nafise Sadat Moosavi
-              <br>
-              <em>EMNLP 2025 [<a href="https://arxiv.org/abs/2402.13818">arXiv</a>]</em>
-            </td>
-          </tr>
+    <section class="section bio">
+      <h2>About</h2>
+      <div class="section-body">
+        <p>I'm particularly interested in <span class="keyword">computational social science</span> and <span class="keyword">natural language processing</span>. My research focuses on understanding cultural biases and social dynamics in AI systems, with emphasis on cross-cultural perspectives and multilingual analysis.</p>
+      </div>
+    </section>
 
-          <tr>
-            <td style="padding:8px 20px;width:100%;vertical-align:middle">
-              <papertitle>MultiHoax: A Dataset of Multi-hop False-premise questions</papertitle>
-              <br>
-              Mohammadamin Shafiei*, 
-              <strong>Hamidreza Saffari</strong>*, 
-              Nafise Sadat Moosavi
-              <br>
-              <em>ACL 2025 [<a href="https://aclanthology.org/2025.findings-acl.530/">Paper</a>]</em>
-              <br>
-              <small>* Equal contribution</small>
-            </td>
-          </tr>
+    <div class="fleuron">❦</div>
 
-          <tr>
-            <td style="padding:8px 20px;width:100%;vertical-align:middle">
-              <papertitle>Not All Jokes Land: Evaluating Large Language Models Understanding of Workplace Humor</papertitle>
-              <br>
-              Mohammadamin Shafiei*, 
-              <strong>Hamidreza Saffari</strong>*, 
-              <br>
-              <em>arXiv 2025 [<a href="https://arxiv.org/abs/2506.01819">arXiv</a>]</em>
-              <br>
-              <small>* Equal contribution</small>
-            </td>
-          </tr>
+    <section class="section">
+      <h2>Publications</h2>
+      <div class="section-body pubs">
 
-          <tr>
-            <td style="padding:8px 20px;width:100%;vertical-align:middle">
-              <papertitle>LingAlign: A Multilingual, Multidimensional Benchmark for Evaluating LLM Alignment Variability</papertitle>
-              <br>
-              Mohammadamin Shafiei*, 
-              <strong>Hamidreza Saffari</strong>*, 
-              Nafise Sadat Moosavi
-              <br>
-              <em>AAAI 2026</em>
-              <br>
-              <small>* Equal contribution</small>
-            </td>
-          </tr>
+        <div class="pub">
+          <div class="meta"><span class="venue">NAACL</span><span>2025</span></div>
+          <p class="title">Can I introduce my boyfriend to my grandmother? Evaluating LLMs on Iranian Culture</p>
+          <div class="authors"><span class="me">Hamidreza Saffari</span>, Mohammadamin Shafiei, Donya Rooein, Francesco Pierri, Debora Nozza</div>
+          <div class="links"><a href="https://aclanthology.org/2025.findings-naacl.337/">paper</a></div>
+        </div>
 
-          <tr>
-            <td style="padding:8px 20px;width:100%;vertical-align:middle">
-              <papertitle>Framing Bias in Arithmetic Reasoning: How Language and Identity Cues Steer LLM Outputs in Objective Tasks</papertitle>
-              <br>
-              Mohammadamin Shafiei*, 
-              <strong>Hamidreza Saffari</strong>*, 
-              Nafise Sadat Moosavi
-              <br>
-              <em>IJCNLP/AACL 2025</em>
-              <br>
-              <small>* Equal contribution</small>
-            </td>
-          </tr>
+        <div class="pub">
+          <div class="meta"><span class="venue">ACL · GebNLP</span><span>2025</span></div>
+          <p class="title">Measuring Gender Bias in Language Models in Farsi</p>
+          <div class="authors"><span class="me">Hamidreza Saffari</span>, Mohammadamin Shafiei, Donya Rooein, Debora Nozza</div>
+          <div class="links"><a href="https://aclanthology.org/2025.gebnlp-1.21/">paper</a></div>
+        </div>
 
-          <tr>
-            <td style="padding:8px 20px;width:100%;vertical-align:middle">
-              <papertitle>TruthTrap: A Bilingual Benchmark for Evaluating Factually Correct Yet Misleading Information in Question Answering</papertitle>
-              <br>
-              Mohammadamin Shafiei*, 
-              <strong>Hamidreza Saffari</strong>*, 
-              Mohammad Taher Pilehvar, 
-              Alessandro Raganato
-              <br>
-              <em>EMNLP 2025</em>
-              <br>
-              <small>* Equal contribution</small>
-            </td>
-          </tr>
+        <div class="pub">
+          <div class="meta"><span class="venue">EMNLP</span><span>2025</span></div>
+          <p class="title">Beyond Hate Speech: NLP's Challenges and Opportunities in Dehumanizing</p>
+          <div class="authors"><span class="me">Hamidreza Saffari</span>, Mohammadamin Shafiei, Hezhao Zhang, Lasana Harris, Nafise Sadat Moosavi</div>
+          <div class="links"><a href="https://arxiv.org/abs/2402.13818">arXiv</a></div>
+        </div>
 
+        <div class="pub">
+          <div class="meta"><span class="venue">ACL</span><span>2025</span></div>
+          <p class="title">MultiHoax: A Dataset of Multi-hop False-premise Questions</p>
+          <div class="authors">Mohammadamin Shafiei*, <span class="me">Hamidreza Saffari</span>*, Nafise Sadat Moosavi</div>
+          <div class="links"><a href="https://aclanthology.org/2025.findings-acl.530/">paper</a></div>
+          <div class="equal">* equal contribution</div>
+        </div>
 
+        <div class="pub">
+          <div class="meta"><span class="venue">arXiv</span><span>2025</span></div>
+          <p class="title">Not All Jokes Land: Evaluating Large Language Models Understanding of Workplace Humor</p>
+          <div class="authors">Mohammadamin Shafiei*, <span class="me">Hamidreza Saffari</span>*</div>
+          <div class="links"><a href="https://arxiv.org/abs/2506.01819">arXiv</a></div>
+          <div class="equal">* equal contribution</div>
+        </div>
 
-          <tr>
-            <td style="padding:8px 20px;width:100%;vertical-align:middle">
-              <papertitle>PsyEmbedding: Fine-tuning Pre-trained Transformer Models for Quantifying Psychological Similarity in Text</papertitle>
-              <br>
-              Mohammad Atari, 
-              Aida Davani, 
-              Mohammadamin Shafiei, 
-              <strong>Hamidreza Saffari</strong>, 
-              Arian Bolandi
-              <br>
-              <em>TBA</em>
-            </td>
-          </tr>
+        <div class="pub">
+          <div class="meta"><span class="venue">AAAI</span><span>2026</span></div>
+          <p class="title">LingAlign: A Multilingual, Multidimensional Benchmark for Evaluating LLM Alignment Variability</p>
+          <div class="authors">Mohammadamin Shafiei*, <span class="me">Hamidreza Saffari</span>*, Nafise Sadat Moosavi</div>
+          <div class="equal">* equal contribution</div>
+        </div>
 
-          <tr>
-            <td style="padding:8px 20px;width:100%;vertical-align:middle">
-              <papertitle>A type-2 neuro-fuzzy system with a novel learning method for Parkinson's disease diagnosis</papertitle>
-              <br>
-              Armin Salimi-Badr, 
-              Mohammad Hashemi, 
-              <strong>Hamidreza Saffari</strong>
-              <br>
-              <em>Applied Intelligence (APIN) 2023 [<a href="https://link.springer.com/article/10.1007/s10489-022-04276-8">Paper</a>]</em>
-            </td>
-          </tr>
+        <div class="pub">
+          <div class="meta"><span class="venue">IJCNLP · AACL</span><span>2025</span></div>
+          <p class="title">Framing Bias in Arithmetic Reasoning: How Language and Identity Cues Steer LLM Outputs in Objective Tasks</p>
+          <div class="authors">Mohammadamin Shafiei*, <span class="me">Hamidreza Saffari</span>*, Nafise Sadat Moosavi</div>
+          <div class="equal">* equal contribution</div>
+        </div>
 
+        <div class="pub">
+          <div class="meta"><span class="venue">EMNLP</span><span>2025</span></div>
+          <p class="title">TruthTrap: A Bilingual Benchmark for Evaluating Factually Correct Yet Misleading Information in Question Answering</p>
+          <div class="authors">Mohammadamin Shafiei*, <span class="me">Hamidreza Saffari</span>*, Mohammad Taher Pilehvar, Alessandro Raganato</div>
+          <div class="equal">* equal contribution</div>
+        </div>
 
-        </tbody></table>
-  
-  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr>
-    <td style="padding:20px;width:100%;vertical-align:middle">
-      <heading>Education</heading>
-    </td>
-  </tr>
-</tbody></table>
+        <div class="pub">
+          <div class="meta"><span class="venue">in&nbsp;preparation</span><span>tba</span></div>
+          <p class="title">PsyEmbedding: Fine-tuning Pre-trained Transformer Models for Quantifying Psychological Similarity in Text</p>
+          <div class="authors">Mohammad Atari, Aida Davani, Mohammadamin Shafiei, <span class="me">Hamidreza Saffari</span>, Arian Bolandi</div>
+        </div>
 
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
-  <tbody><tr bgcolor="#ffffff">
-    <td width="25%">
-      <img src="images/polimi.png" width="120">   
-    </td>
-    <td valign="center" width="75%" style="padding-left:1px;">
-      <a href="https://polimi.it/"><papertitle>Politecnico di Milano</papertitle></a>
-      <br>
-      <a href="https://www.deib.polimi.it/eng/computer-science-and-engineering">Computer Science and Engineering department</a>
-      <br>Master Student<br>
-      <em>September 2023 - Present</em>
-    </td>
-  </tr>
-</tbody></table>
+        <div class="pub">
+          <div class="meta"><span class="venue">Applied Intelligence</span><span>2023</span></div>
+          <p class="title">A type-2 neuro-fuzzy system with a novel learning method for Parkinson's disease diagnosis</p>
+          <div class="authors">Armin Salimi-Badr, Mohammad Hashemi, <span class="me">Hamidreza Saffari</span></div>
+          <div class="links"><a href="https://link.springer.com/article/10.1007/s10489-022-04276-8">paper</a></div>
+        </div>
 
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
-  <tbody><tr bgcolor="#ffffff">
-    <td width="25%">
-      <img src="images/Sbu-logo.png" width="100">   
-    </td>
-    <td valign="center" width="75%" style="padding-left:1px;">
-      <a href="https://en.sbu.ac.ir/"><papertitle>Shahid Beheshti University</papertitle></a>
-      <br>
-      <a href="https://encse.sbu.ac.ir/">Faculty of Computer Science and Engineering</a>
-      <br>Bachelor Student<br>
-      <em>September 2018 - February 2023</em>
-    </td>
-  </tr>
-</tbody></table>
+      </div>
+    </section>
 
-  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-    <tbody>
-      <tr>
-          <td>
-          <br>
-          <p align="right">Template developed by <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron</a></p>
-          </td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="colophon">
+      <span>Set in Newsreader. Iron-oxide ink on bone paper.</span>
+      <span>Milano · MMXXVI</span>
+    </div>
+  </div>
 
 </body>
 </html>
