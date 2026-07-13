@@ -214,6 +214,25 @@
     padding: 0 2px;
   }
 
+  /* Farsi watermark: faint line-art of Persian monuments, fixed behind content */
+  .fa-watermark {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.055;
+  }
+  .fa-watermark svg { width: 100%; height: 100%; }
+  .fa-watermark .motif {
+    stroke: var(--ink);
+    fill: none;
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  html[lang="fa"] .fa-watermark { display: block; }
+
   /* Language toggle */
   .lang-toggle {
     position: fixed;
@@ -289,6 +308,115 @@
 </style>
 </head>
 <body>
+
+  <div class="fa-watermark" aria-hidden="true">
+    <svg preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="monuments" patternUnits="userSpaceOnUse" width="1050" height="260">
+          <g class="motif">
+            <!-- Persepolis -->
+            <g transform="translate(0,20)">
+              <line x1="10" y1="130" x2="110" y2="130"/>
+              <line x1="15" y1="120" x2="105" y2="120"/>
+              <line x1="20" y1="110" x2="100" y2="110"/>
+              <line x1="30" y1="30" x2="30" y2="110"/>
+              <line x1="60" y1="20" x2="60" y2="110"/>
+              <line x1="90" y1="30" x2="90" y2="110"/>
+              <path d="M22,30 Q30,20 38,30"/>
+              <path d="M52,20 Q60,10 68,20"/>
+              <path d="M82,30 Q90,20 98,30"/>
+              <line x1="18" y1="30" x2="42" y2="30"/>
+              <line x1="48" y1="20" x2="72" y2="20"/>
+              <line x1="78" y1="30" x2="102" y2="30"/>
+            </g>
+            <!-- Tomb of Cyrus -->
+            <g transform="translate(150,20)">
+              <line x1="20" y1="130" x2="100" y2="130"/>
+              <line x1="26" y1="122" x2="94" y2="122"/>
+              <line x1="20" y1="130" x2="26" y2="122"/>
+              <line x1="100" y1="130" x2="94" y2="122"/>
+              <line x1="32" y1="112" x2="88" y2="112"/>
+              <line x1="26" y1="122" x2="32" y2="112"/>
+              <line x1="94" y1="122" x2="88" y2="112"/>
+              <line x1="38" y1="102" x2="82" y2="102"/>
+              <line x1="32" y1="112" x2="38" y2="102"/>
+              <line x1="88" y1="112" x2="82" y2="102"/>
+              <rect x="44" y="65" width="32" height="37"/>
+              <path d="M44,65 L60,42 L76,65"/>
+            </g>
+            <!-- Tomb of Khayyam -->
+            <g transform="translate(300,20)">
+              <line x1="25" y1="130" x2="95" y2="130"/>
+              <line x1="30" y1="115" x2="90" y2="115"/>
+              <line x1="25" y1="130" x2="30" y2="115"/>
+              <line x1="95" y1="130" x2="90" y2="115"/>
+              <path d="M32,115 L60,30 L88,115"/>
+              <path d="M39,115 L55,40"/>
+              <path d="M46,115 L60,50"/>
+              <path d="M53,115 L60,60"/>
+              <path d="M81,115 L65,40"/>
+              <path d="M74,115 L60,50"/>
+              <path d="M67,115 L60,60"/>
+            </g>
+            <!-- Ferdowsi Tomb -->
+            <g transform="translate(450,20)">
+              <line x1="20" y1="130" x2="100" y2="130"/>
+              <line x1="24" y1="95" x2="24" y2="130"/>
+              <line x1="38" y1="95" x2="38" y2="130"/>
+              <line x1="52" y1="95" x2="52" y2="130"/>
+              <line x1="68" y1="95" x2="68" y2="130"/>
+              <line x1="82" y1="95" x2="82" y2="130"/>
+              <line x1="96" y1="95" x2="96" y2="130"/>
+              <line x1="18" y1="95" x2="102" y2="95"/>
+              <line x1="28" y1="80" x2="92" y2="80"/>
+              <line x1="18" y1="95" x2="28" y2="80"/>
+              <line x1="102" y1="95" x2="92" y2="80"/>
+              <line x1="38" y1="65" x2="82" y2="65"/>
+              <line x1="28" y1="80" x2="38" y2="65"/>
+              <line x1="92" y1="80" x2="82" y2="65"/>
+              <path d="M38,65 L60,35 L82,65"/>
+            </g>
+            <!-- Hafez Tomb -->
+            <g transform="translate(600,20)">
+              <line x1="15" y1="130" x2="105" y2="130"/>
+              <line x1="22" y1="70" x2="22" y2="130"/>
+              <line x1="38" y1="70" x2="38" y2="130"/>
+              <line x1="82" y1="70" x2="82" y2="130"/>
+              <line x1="98" y1="70" x2="98" y2="130"/>
+              <line x1="60" y1="65" x2="60" y2="130"/>
+              <line x1="15" y1="70" x2="105" y2="70"/>
+              <path d="M20,70 Q60,30 100,70"/>
+              <line x1="60" y1="32" x2="60" y2="20"/>
+              <circle cx="60" cy="16" r="3.5"/>
+            </g>
+            <!-- Azadi Tower -->
+            <g transform="translate(750,20)">
+              <line x1="15" y1="130" x2="105" y2="130"/>
+              <line x1="25" y1="130" x2="25" y2="118"/>
+              <line x1="95" y1="130" x2="95" y2="118"/>
+              <line x1="15" y1="118" x2="105" y2="118"/>
+              <path d="M35,118 C35,80 45,45 60,25 C75,45 85,80 85,118"/>
+              <path d="M45,118 C45,88 51,58 60,40 C69,58 75,88 75,118"/>
+            </g>
+            <!-- Naqsh-e Rustam -->
+            <g transform="translate(900,20)">
+              <path d="M42,38 L60,26 L78,38"/>
+              <line x1="42" y1="38" x2="42" y2="48"/>
+              <line x1="78" y1="38" x2="78" y2="48"/>
+              <rect x="22" y="48" width="76" height="42"/>
+              <line x1="34" y1="48" x2="34" y2="90"/>
+              <line x1="46" y1="48" x2="46" y2="90"/>
+              <line x1="74" y1="48" x2="74" y2="90"/>
+              <line x1="86" y1="48" x2="86" y2="90"/>
+              <rect x="48" y="90" width="24" height="40"/>
+              <line x1="15" y1="130" x2="105" y2="130"/>
+            </g>
+          </g>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#monuments)"/>
+    </svg>
+  </div>
 
   <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language" data-en="فارسی" data-fa="English">فارسی</button>
 
