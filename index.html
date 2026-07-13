@@ -8,7 +8,16 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    try {
+      var lang = localStorage.getItem('site-lang') || 'en';
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
+    } catch (e) {}
+  })();
+</script>
 <style>
   :root {
     --paper: #fdfcfa;
@@ -205,6 +214,49 @@
     padding: 0 2px;
   }
 
+  /* Language toggle */
+  .lang-toggle {
+    position: fixed;
+    top: 22px;
+    right: 22px;
+    z-index: 10;
+    font-family: 'Vazirmatn', 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-2);
+    background: var(--paper-2);
+    border: 0.5px solid var(--rule);
+    border-radius: 999px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  .lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* Publication entries stay in English regardless of site language */
+  .pubs { direction: ltr; unicode-bidi: isolate; }
+
+  /* Farsi mode */
+  html[lang="fa"] body {
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    line-height: 1.85;
+  }
+  html[lang="fa"] .hero h1 {
+    font-family: 'Aref Ruqaa', serif;
+    font-weight: 700;
+    font-size: 56px;
+    letter-spacing: 0;
+  }
+  html[lang="fa"] .hero .role { font-size: 17px; }
+  html[lang="fa"] .section h2 {
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+  }
+  html[lang="fa"] .bio p { font-size: 18px; }
+  html[lang="fa"] .colophon { font-style: normal; }
+  html[lang="fa"] .rail { font-size: 14.5px; }
+
   /* Responsive — collapse the print-margin layout on narrow screens */
   @media (max-width: 720px) {
     .page { padding: 48px 24px 64px; }
@@ -232,39 +284,42 @@
     .pub .meta .venue { display: inline; }
     .pub .meta .venue::after { content: " · "; color: var(--mute); }
     .colophon { flex-direction: column; gap: 4px; }
+    .lang-toggle { top: 14px; right: 14px; padding: 5px 12px; }
   }
 </style>
 </head>
 <body>
 
+  <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language" data-en="فارسی" data-fa="English">فارسی</button>
+
   <div class="page">
     <div class="hero">
       <div>
-        <h1>Hamidreza Saffari</h1>
-        <p class="role">Computer&nbsp;Science MSc&nbsp;student at <a href="https://polimi.it/">Politecnico di Milano</a>. I work on language models, culture, and the quiet frictions between them.</p>
+        <h1 data-en="Hamidreza Saffari" data-fa="حمیدرضا صفری">Hamidreza Saffari</h1>
+        <p class="role" data-en-html="Computer&amp;nbsp;Science MSc&amp;nbsp;student at &lt;a href=&quot;https://polimi.it/&quot;&gt;Politecnico di Milano&lt;/a&gt;. I work on language models, culture, and the quiet frictions between them." data-fa-html="دانشجوی کارشناسی‌ارشد علوم کامپیوتر در &lt;a href=&quot;https://polimi.it/&quot;&gt;پلی‌تکنیک میلان&lt;/a&gt;. من روی مدل‌های زبانی، فرهنگ، و کشمکش‌های ظریف میان آن‌ها کار می‌کنم.">Computer&nbsp;Science MSc&nbsp;student at <a href="https://polimi.it/">Politecnico di Milano</a>. I work on language models, culture, and the quiet frictions between them.</p>
         <div class="rail">
-          <a href="data/CVf.pdf">CV</a><span class="sep">·</span>
-          <a href="mailto:hamids9965@gmail.com">Email</a><span class="sep">·</span>
-          <a href="https://scholar.google.co.uk/citations?hl=en&pli=1&user=twyxntoAAAAJ">Scholar</a><span class="sep">·</span>
-          <a href="https://www.linkedin.com/in/hamidreza-saffari/">LinkedIn</a><span class="sep">·</span>
-          <a href="https://github.com/hamidds">GitHub</a>
+          <a href="data/CVf.pdf" data-en="CV" data-fa="رزومه">CV</a><span class="sep">·</span>
+          <a href="mailto:hamids9965@gmail.com" data-en="Email" data-fa="ایمیل">Email</a><span class="sep">·</span>
+          <a href="https://scholar.google.co.uk/citations?hl=en&pli=1&user=twyxntoAAAAJ" data-en="Scholar" data-fa="گوگل اسکالر">Scholar</a><span class="sep">·</span>
+          <a href="https://www.linkedin.com/in/hamidreza-saffari/" data-en="LinkedIn" data-fa="لینکدین">LinkedIn</a><span class="sep">·</span>
+          <a href="https://github.com/hamidds" data-en="GitHub" data-fa="گیت‌هاب">GitHub</a>
         </div>
       </div>
-      <div class="portrait" role="img" aria-label="Portrait of Hamidreza Saffari"></div>
+      <div class="portrait" role="img" aria-label="Portrait of Hamidreza Saffari" data-en-aria="Portrait of Hamidreza Saffari" data-fa-aria="تصویر پرتره حمیدرضا صفری"></div>
     </div>
 
     <section class="section bio">
-      <h2>About</h2>
+      <h2 data-en="About" data-fa="درباره من">About</h2>
       <div class="section-body">
-        <p>I'm particularly interested in <span class="keyword">computational social science</span> and <span class="keyword">natural language processing</span>. My research focuses on understanding cultural biases and social dynamics in AI systems, with emphasis on cross-cultural perspectives and multilingual analysis.</p>
+        <p data-en-html="I'm particularly interested in &lt;span class=&quot;keyword&quot;&gt;computational social science&lt;/span&gt; and &lt;span class=&quot;keyword&quot;&gt;natural language processing&lt;/span&gt;. My research focuses on understanding cultural biases and social dynamics in AI systems, with emphasis on cross-cultural perspectives and multilingual analysis." data-fa-html="من به‌ویژه به &lt;span class=&quot;keyword&quot;&gt;علوم اجتماعی محاسباتی&lt;/span&gt; و &lt;span class=&quot;keyword&quot;&gt;پردازش زبان طبیعی&lt;/span&gt; علاقه‌مندم. پژوهش‌های من بر شناخت سوگیری‌های فرهنگی و پویایی‌های اجتماعی در سامانه‌های هوش مصنوعی متمرکز است، با تأکیدی ویژه بر دیدگاه‌های میان‌فرهنگی و تحلیل چندزبانه.">I'm particularly interested in <span class="keyword">computational social science</span> and <span class="keyword">natural language processing</span>. My research focuses on understanding cultural biases and social dynamics in AI systems, with emphasis on cross-cultural perspectives and multilingual analysis.</p>
       </div>
     </section>
 
     <div class="fleuron">❦</div>
 
     <section class="section">
-      <h2>Publications</h2>
-      <div class="section-body pubs">
+      <h2 data-en="Publications" data-fa="انتشارات">Publications</h2>
+      <div class="section-body pubs" dir="ltr">
 
         <div class="pub">
           <div class="meta"><span class="venue">NAACL</span><span>2025</span></div>
@@ -341,9 +396,40 @@
     </section>
 
     <div class="colophon">
-      <span>Milano · MMXXVI</span>
+      <span data-en="Milano · MMXXVI" data-fa="میلان · MMXXVI">Milano · MMXXVI</span>
     </div>
   </div>
 
+  <script>
+    (function () {
+      var STORAGE_KEY = 'site-lang';
+
+      function applyLang(lang) {
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
+
+        document.querySelectorAll('[data-en]').forEach(function (el) {
+          el.textContent = lang === 'fa' ? el.getAttribute('data-fa') : el.getAttribute('data-en');
+        });
+        document.querySelectorAll('[data-en-html]').forEach(function (el) {
+          el.innerHTML = lang === 'fa' ? el.getAttribute('data-fa-html') : el.getAttribute('data-en-html');
+        });
+        var portrait = document.querySelector('.portrait');
+        if (portrait) {
+          portrait.setAttribute('aria-label', lang === 'fa' ? portrait.getAttribute('data-fa-aria') : portrait.getAttribute('data-en-aria'));
+        }
+        document.title = lang === 'fa' ? 'حمیدرضا صفری' : 'Hamidreza Saffari';
+
+        try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+      }
+
+      var initialLang = document.documentElement.lang === 'fa' ? 'fa' : 'en';
+      applyLang(initialLang);
+
+      document.getElementById('lang-toggle').addEventListener('click', function () {
+        applyLang(document.documentElement.lang === 'fa' ? 'en' : 'fa');
+      });
+    })();
+  </script>
 </body>
 </html>
