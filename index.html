@@ -292,29 +292,28 @@
     font-family: 'Newsreader', serif;
     font-weight: 500;
     font-size: 26px;
-    margin: 0 0 12px;
-    color: var(--ink);
-  }
-  .landmarks-intro {
-    font-size: 15.5px;
-    color: var(--ink-2);
-    line-height: 1.6;
     margin: 0 0 28px;
-    max-width: 48em;
+    color: var(--ink);
   }
   .landmarks-close {
     position: absolute;
     top: 16px;
-    right: 20px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: none;
     border: none;
-    font-size: 22px;
+    border-radius: 50%;
+    font-size: 20px;
     line-height: 1;
     color: var(--mute);
     cursor: pointer;
-    padding: 4px;
+    padding: 0;
   }
-  .landmarks-close:hover { color: var(--accent); }
+  .landmarks-close:hover { color: var(--accent); background: var(--paper-2); }
   .landmarks-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -351,7 +350,6 @@
     margin: 0;
   }
   html[lang="fa"] .landmarks-panel h2 { font-family: 'Vazirmatn', Tahoma, sans-serif; }
-  html[lang="fa"] .landmarks-intro,
   html[lang="fa"] .landmark-name,
   html[lang="fa"] .landmark-desc { font-family: 'Vazirmatn', Tahoma, sans-serif; }
 
@@ -453,10 +451,10 @@
     <svg preserveAspectRatio="xMidYMid slice">
       <defs>
         <pattern id="monuments" patternUnits="userSpaceOnUse" width="730" height="220">
-          <use href="#icon-hafez" transform="translate(0,30) scale(0.7407)" fill="currentColor"/>
-          <use href="#icon-khayyam" transform="translate(140,30) scale(0.6623)" fill="currentColor"/>
-          <use href="#icon-azadi" transform="translate(264.8,30) scale(0.6757)" fill="currentColor"/>
-          <use href="#icon-kamal" transform="translate(487.9,30) scale(1.087)" fill="currentColor"/>
+          <use href="#icon-hafez" width="135" height="135" transform="translate(0,30) scale(0.7407)" fill="currentColor"/>
+          <use href="#icon-khayyam" width="128" height="151" transform="translate(140,30) scale(0.6623)" fill="currentColor"/>
+          <use href="#icon-azadi" width="271" height="148" transform="translate(264.8,30) scale(0.6757)" fill="currentColor"/>
+          <use href="#icon-kamal" width="186" height="92" transform="translate(487.9,30) scale(1.087)" fill="currentColor"/>
         </pattern>
       </defs>
       <rect width="100%" height="100%" fill="url(#monuments)"/>
@@ -471,7 +469,6 @@
     <div class="landmarks-panel" role="dialog" aria-modal="true" aria-labelledby="landmarks-title">
       <button id="landmarks-close" class="landmarks-close" type="button" aria-label="Close" data-en="&times;" data-fa="&times;">&times;</button>
       <h2 id="landmarks-title" data-en="A few landmarks from home" data-fa="چند نماد از خانه">A few landmarks from home</h2>
-      <p class="landmarks-intro" data-en="The faint shapes tiled behind this page are four places and people I find genuinely moving. A small, personal way to bring a bit of Iran into this corner of the internet." data-fa="نقش‌های کم‌رنگی که پشت این صفحه تکرار شده‌اند، مربوط به چهار جا و آدمی هستند که واقعاً برایم عزیزند؛ راهی کوچک و شخصی برای آوردن گوشه‌ای از ایران به این صفحه.">The faint shapes tiled behind this page are four places and people I find genuinely moving. A small, personal way to bring a bit of Iran into this corner of the internet.</p>
       <div class="landmarks-grid">
         <a class="landmark-card" href="https://en.wikipedia.org/wiki/Tomb_of_Hafez" target="_blank" rel="noopener">
           <svg class="landmark-icon" viewBox="0 0 135 135"><use href="#icon-hafez"/></svg>
